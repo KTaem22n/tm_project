@@ -1,0 +1,17 @@
+# Anonymization method
+anonymization-method: aggregated_similarity  # or differential_similarity
+
+# External pool
+external-pool-path: data/external_pool/librispeech_xvectors.npy
+pool-size: 500
+num-farthest: 200
+num-candidates: 10000
+
+# Models
+hubert-model: models/msa/hubert
+hifigan-model: models/msa/hifigan
+ecapa-model: models/msa/ecapa_tdnn
+
+# Audio processing
+sampling-rate: 16000
+hop-length: 160

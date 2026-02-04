@@ -1,0 +1,9 @@
+librosa
+
+numpy
+safe_gpu
+scipy
+soundfile
+tensorboard
+torch
+yamlargparse

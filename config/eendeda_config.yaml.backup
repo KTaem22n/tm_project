@@ -1,0 +1,41 @@
+# 1. 모델 아키텍처 설정 (Callhome 설정 반영)
+model_type: TransformerEDA
+encoder_units: 2048           # 모델의 너비
+hidden_size: 256
+context_size: 7               # 전후 프레임 참조 범위
+transformer_encoder_n_heads: 4
+transformer_encoder_n_layers: 4
+transformer_encoder_dropout: 0.1
+
+# 2. 어트랙터(Attractor) 및 화자 수 추정 설정
+attractor_encoder_dropout: 0.1
+attractor_decoder_dropout: 0.1
+attractor_loss_ratio: 2.0
+estimate_spk_qty: -1
+estimate_spk_qty_thr: 0.5
+threshold: 0.5
+median_window_length: 15
+
+# 3. 오디오 특징 추출 설정 (Callhome 설정 반영)
+feature_dim: 80               # 80차원 Log-mel
+sampling_rate: 16000
+frame_shift: 160
+frame_size: 400
+subsampling: 10
+input_transform: logmel_meannorm
+time_shuffle: true
+
+# 4. VIB 구동을 위한 필수 파라미터 (코드 에러 방지용)
+use_mu_z: false
+use_mu_e: false
+num_zsamples: 1               # AssertionError 방지 (최소 1)
+num_esamples: 1               # AssertionError 방지 (최소 1)
+zkld_loss_weight: 0.000001
+ekld_loss_weight: 0.000001
+vad_loss_weight: 1.0          # AttributeError 방지
+temp: 1.0                     # AttributeError 방지
+
+# 5. 기타 실행 설정
+gpu: 0
+seed: 3
+num_frames: -1
